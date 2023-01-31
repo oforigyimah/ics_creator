@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/index.css" />
+    <title>Calender ics creator</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <div class="navLink">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Reset</a></li>
+          </div>
+          <div>
+            <li id="view">View ics</li>
+            <li id="download">Download ics</li>
+          </div>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1>ALX Timetab Calender ics file creator</h1>
+      <lable for="title">Tilte</lable>
+      <textarea id="title"></textarea>
+
+      <button id="pasteButton1" type="button">Paste</button>
+      <select name="language" id="language">
+        <option value="Event">Event</option>
+        <option value="Project" selected>Project</option>
+      </select>
+      <lable for="loc">Location</lable>
+      <textarea id="loc"></textarea>
+      <button id="pasteButton" type="button">Paste</button>
+      <br />
+
+      <label for="sDate">Starting Date</label>
+      <!--  <input type="date" id="date-string" /> -->
+      <input
+        type="datetime-local"
+        id="sDate"
+        min="2023-01-01T00:00"
+        max="2024-01-01T00:00"
+      />
+      <br />
+      <label for="eDate">Ending Date</label>
+      <!--  <input type="date" id="date-string" /> -->
+      <input
+        type="datetime-local"
+        id="eDate"
+        min="2023-01-01T00:00"
+        max="2024-01-01T00:00"
+      />
+    </main>
+    <footer>
+      <img
+        alt="Github"
+        src="https://github.com/awidener3/code-quiz/raw/main/assets/images/GitHub-Mark-Light-64px.png"
+      />
+    </footer>
+
+    <script src="js/index.js"></script>
+  </body>
+</html>
