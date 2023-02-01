@@ -88,3 +88,38 @@ input.value = "2021-03-31";
 input.addEventListener("input", () => {
   console.log(input.value); // 2021-03-31
 });
+
+function init(){
+  renderHome();
+}
+
+let mainEl = document.querySelector("#mainEl");
+let homeLi = document.querySelector("#homeLi");
+
+function renderHome(){
+  mainEl.innerHTML = "";
+  let head = document.createElement("h1");
+  head.textContent = "ALX Timetab Calender ics file creator";
+  mainEl.appendChild(head);
+  renderTitle("Trail") 
+}
+
+function renderTitle(titleContent){
+  let title = document.createElement("h2");
+  title.classList.add("q-title");
+  title.textContent = titleContent;
+  mainEl.appendChild(title);
+}
+
+init();
+
+
+
+
+
+
+
+
+
+
+
