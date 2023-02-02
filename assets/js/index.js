@@ -1,4 +1,4 @@
-let icsFile;
+//let icsFile;
 
 /*
 function createIcs(sTime, eTime, title, location, description) {
@@ -95,15 +95,15 @@ function renderHome() {
   mainEl.appendChild(head);
 
   // ---*** Description Selector ***---
-  let selectLable = document.createElement("lable");
-  selectLable.setAttribute("for", "description");
+  let selectLabel = document.createElement("label");
+  selectLabel.setAttribute("for", "description");
   let select = document.createElement("select");
   let selectAttrs ={
     id:"description",
     name: "description"
   }
   setMultipleAttrs(select, selectAttrs);
-  selectLable.textContent = "description";
+  selectLabel.textContent = "description";
   let option = document.createElement("option");
   option.setAttribute("value", "Event");
   option.textContent = "Event";
@@ -116,7 +116,7 @@ function renderHome() {
   option1.textContent = "Project";
   select.appendChild(option);
   select.appendChild(option1);
-  mainEl.appendChild(selectLable);
+  mainEl.appendChild(selectLabel);
   mainEl.appendChild(select);
 
   // ---*** Title Input Box ***---
@@ -136,6 +136,36 @@ function renderHome() {
   locTextArea.setAttribute("id", "loc");
   mainEl.appendChild(inputLoc);
   mainEl.appendChild(locTextArea);
+
+  // ---*** Start Date ***---
+  let sDateLabel = document.createElement("label");
+  sDateLabel.setAttribute("for", "sDate");
+  sDateLabel.textContent = "Starting Date";
+  let sDateInput = document.createElement("input");
+  let sDateAttrs = {
+    id: "sDate",
+    max: "2024-01-01T00:00",
+    min: "2023-01-01T00:00",
+    type: "datetime-local"
+  }
+  setMultipleAttrs(sDateInput,sDateAttrs);
+  mainEl.appendChild(sDateLabel);
+  mainEl.appendChild(sDateInput);
+
+  // ---*** Ending Date ***---
+  let eDateLabel = document.createElement("label");
+  eDateLabel.setAttribute("for", "sDate");
+  eDateLabel.textContent = "Ending Date";
+  let eDateInput = document.createElement("input");
+  let eDateAttrs = {
+    id: "eDate",
+    max: "2024-01-01T00:00",
+    min: "2023-01-01T00:00",
+    type: "datetime-local"
+  }
+  setMultipleAttrs(sDateInput,sDateAttrs);
+  mainEl.appendChild(sDateLabel);
+  mainEl.appendChild(sDateInput);
 
 }
 
