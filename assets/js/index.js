@@ -56,17 +56,7 @@ const pasteButton = document.getElementById("pasteButton");
 pasteButton.addEventListener("click", async () => {
   try {
     const text = await navigator.clipboard.readText();
-    document.querySelector("#loc").value += text;
-    console.log("Text pasted.");
-  } catch (error) {
-    console.log("Failed to read clipboard");
-  }
-});
-const pasteButton1 = document.getElementById("pasteButton1");
-pasteButton1.addEventListener("click", async () => {
-  try {
-    const text = await navigator.clipboard.readText();
-    document.querySelector("#title").value += text;
+    document.getElementById('title').value += text;
     console.log("Text pasted.");
   } catch (error) {
     console.log("Failed to read clipboard");
@@ -88,7 +78,7 @@ let mainEl = document.querySelector("#mainEl");
 let homeLi = document.querySelector("#homeLi");
 
 function renderHome() {
-  mainEl.innerHTML = "";
+ // mainEl.innerHTML = "";
   // ---*** Head Title ***---
   let head = document.createElement("h1");
   head.textContent = "ALX Timetable Calender ics file creator";
@@ -123,7 +113,7 @@ function renderHome() {
   let inputLabel = document.createElement("label");
   inputLabel.setAttribute("for", "title");
   inputLabel.textContent = "Title"
-  let titleTextArea = document.createElement("textarea");
+  let titleTextArea = document.createElement("input");
   titleTextArea.setAttribute("id", "title");
   mainEl.appendChild(inputLabel);
   mainEl.appendChild(titleTextArea);
@@ -132,7 +122,7 @@ function renderHome() {
   let inputLoc = document.createElement("label");
   inputLoc.setAttribute("for", "loc");
   inputLoc.textContent = "Location"
-  let locTextArea = document.createElement("textarea");
+  let locTextArea = document.createElement("input");
   locTextArea.setAttribute("id", "loc");
   mainEl.appendChild(inputLoc);
   mainEl.appendChild(locTextArea);
@@ -163,9 +153,9 @@ function renderHome() {
     min: "2023-01-01T00:00",
     type: "datetime-local"
   }
-  setMultipleAttrs(sDateInput,sDateAttrs);
-  mainEl.appendChild(sDateLabel);
-  mainEl.appendChild(sDateInput);
+  setMultipleAttrs(eDateInput,eDateAttrs);
+  mainEl.appendChild(eDateLabel);
+  mainEl.appendChild(eDateInput);
 
 }
 

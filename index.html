@@ -26,16 +26,15 @@
      <main id="mainEl">
       <h1>ALX Timetable Calendar ics file creator</h1>
       <label for="title">Title</label>
-      <textarea id="title"></textarea>
-
-      <button id="pasteButton1" type="button">Paste</button>
+      <input type="text" id="title">
+         <button id="pasteButton" type="button">Paste</button>
       <select name="description" id="description">
         <option value="Event">Event</option>
         <option value="Project" selected>Project</option>
       </select>
       <label for="loc">Location</label>
-      <textarea id="loc"></textarea>
-      <button id="pasteButton" type="button">Paste</button>
+      <input id="loc" type="url">
+      <button id="pasteButto" type="button">Paste</button>
       <br />
 
       <label for="sDate">Starting Date</label>
@@ -54,8 +53,8 @@
         id="eDate"
         min="2023-01-01T00:00"
         max="2024-01-01T00:00"
-      /> 
-    </main>
+      />
+     </main>
     <footer>
       <img
         alt="Github"
