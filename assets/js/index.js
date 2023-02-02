@@ -1,5 +1,6 @@
 let icsFile;
 
+/*
 function createIcs(sTime, eTime, title, location, description) {
   // Event details
   let startTime = new Date(sTime);
@@ -32,9 +33,6 @@ function createIcs(sTime, eTime, title, location, description) {
     "END:VEVENT\n" +
     "END:VCALENDAR";
 }
-
-console.log(icsFile);
-// let fileName = prompt("Enter a namme");
 function download(fileName) {
   let a = document.createElement("a");
   // Create a Blob object with the ICS file data
@@ -47,18 +45,11 @@ function download(fileName) {
 
 // Helper function to format the date-time
 function formatDate(date) {
-  // let year = date.getUTCFullYear();
-  // let month = (date.getUTCMonth() + 1).toString().padStart(2, "0");
-  // let day = date.getUTCDate().toString().padStart(2, "0");
-  // let hours = date.getUTCHours().toString().padStart(2, "0");
-  // let minutes = date.getUTCMinutes().toString().padStart(2, "0");
-  // let seconds = date.getUTCSeconds().toString().padStart(2, "0");
-
-  // return year + month + day + "T" + hours + minutes + seconds + "Z";
-  date.replace(":", "");
+    date.replace(":", "");
   date.replace("-", "");
-  return dete;
+  return date;
 }
+*/
 
 // Read text from clipboard...............................
 const pasteButton = document.getElementById("pasteButton");
@@ -96,24 +87,71 @@ function init(){
 let mainEl = document.querySelector("#mainEl");
 let homeLi = document.querySelector("#homeLi");
 
-function renderHome(){
+function renderHome() {
   mainEl.innerHTML = "";
+  // ---*** Head Title ***---
   let head = document.createElement("h1");
-  head.textContent = "ALX Timetab Calender ics file creator";
+  head.textContent = "ALX Timetable Calender ics file creator";
   mainEl.appendChild(head);
-  renderTitle("Trail") 
-}
 
-function renderTitle(titleContent){
-  let title = document.createElement("h2");
-  title.classList.add("q-title");
-  title.textContent = titleContent;
-  mainEl.appendChild(title);
+  // ---*** Description Selector ***---
+  let selectLable = document.createElement("lable");
+  selectLable.setAttribute("for", "description");
+  let select = document.createElement("select");
+  let selectAttrs ={
+    id:"description",
+    name: "description"
+  }
+  setMultipleAttrs(select, selectAttrs);
+  selectLable.textContent = "description";
+  let option = document.createElement("option");
+  option.setAttribute("value", "Event");
+  option.textContent = "Event";
+  let option1Attrs = {
+    value: "Project",
+    selected:""
+  }
+  let option1 = document.createElement("option");
+  setMultipleAttrs(option1, option1Attrs)
+  option1.textContent = "Project";
+  select.appendChild(option);
+  select.appendChild(option1);
+  mainEl.appendChild(selectLable);
+  mainEl.appendChild(select);
+
+  // ---*** Title Input Box ***---
+  let inputLabel = document.createElement("label");
+  inputLabel.setAttribute("for", "title");
+  inputLabel.textContent = "Title"
+  let titleTextArea = document.createElement("textarea");
+  titleTextArea.setAttribute("id", "title");
+  mainEl.appendChild(inputLabel);
+  mainEl.appendChild(titleTextArea);
+
+  // ---*** Location Input Box ***---
+  let inputLoc = document.createElement("label");
+  inputLoc.setAttribute("for", "loc");
+  inputLoc.textContent = "Location"
+  let locTextArea = document.createElement("textarea");
+  locTextArea.setAttribute("id", "loc");
+  mainEl.appendChild(inputLoc);
+  mainEl.appendChild(locTextArea);
+
 }
 
 init();
+  function renderTitle(titleContent) {
+    let title = document.createElement("h2");
+    title.classList.add("q-title");
+    title.textContent = titleContent;
+    mainEl.appendChild(title);
+  }
 
-
+function setMultipleAttrs(elem, elemAttrs) {
+  Object.keys(elemAttrs).forEach(attribute => {
+    elem.setAttribute(attribute, elemAttrs[attribute]);
+  });
+}
 
 
 
