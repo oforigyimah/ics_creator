@@ -3,57 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/index.css" />
     <title>Calender ics creator</title>
   </head>
   <body>
     <header>
       <nav>
+        <ul>
           <div class="navLink">
-        <ul>
-            <li id="homeEl"><a href="#">Home</a></li>
-            <li><a href="#">Reset</a></li>
-        </ul>
+            <li id="home"><a href="#">Home</a></li>
+            <li><a href="#">View</a></li>
           </div>
-          <div>
-        <ul>
-            <li id="view">View ics</li>
-            <li id="download">Download ics</li>
+            <li id="download">Download</li>
         </ul>
-          </div>
       </nav>
     </header>
-     <main id="mainEl">
-      <h1>ALX Timetable Calendar ics file creator</h1>
-      <label for="title">Title</label>
-      <input type="text" id="title">
-         <button id="pasteButton" type="button">Paste</button>
-      <select name="description" id="description">
-        <option value="Event">Event</option>
-        <option value="Project" selected>Project</option>
-      </select>
-      <label for="loc">Location</label>
-      <input id="loc" type="url">
-      <button id="pasteButto" type="button">Paste</button>
-      <br />
-
-      <label for="sDate">Starting Date</label>
     
-      <input
-        type="datetime-local"
-        id="sDate"
-        min="2023-01-01T00:00"
-        max="2024-01-01T00:00"
-      />
-      <br />
-      <label for="eDate">Ending Date</label>
+     <main id="main">
       
-      <input
-        type="datetime-local"
-        id="eDate"
-        min="2023-01-01T00:00"
-        max="2024-01-01T00:00"
-      />
      </main>
     <footer>
       <img

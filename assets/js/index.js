@@ -52,30 +52,30 @@ function formatDate(date) {
 */
 
 // Read text from clipboard...............................
-const pasteButton = document.getElementById("pasteButton");
-pasteButton.addEventListener("click", async () => {
-  try {
-    const text = await navigator.clipboard.readText();
-    document.getElementById('title').value += text;
-    console.log("Text pasted.");
-  } catch (error) {
-    console.log("Failed to read clipboard");
-  }
-});
-
-const input = document.querySelector("#sDate");
-input.value = "2021-03-31";
-
-input.addEventListener("input", () => {
-  console.log(input.value); // 2021-03-31
-});
+// const pasteButton = document.getElementById("pasteButton");
+// pasteButton.addEventListener("click", async () => {
+//   try {
+//     const text = await navigator.clipboard.readText();
+//     document.getElementById('title').value += text;
+//     console.log("Text pasted.");
+//   } catch (error) {
+//     console.log("Failed to read clipboard");
+//   }
+// });
+//
+// const input = document.querySelector("#sDate");
+// input.value = "2021-03-31";
+//
+// input.addEventListener("input", () => {
+//   console.log(input.value); // 2021-03-31
+// });
 
 function init(){
   renderHome();
 }
 
-let mainEl = document.querySelector("#mainEl");
-let homeLi = document.querySelector("#homeLi");
+let mainEl = document.querySelector("#main");
+
 
 function renderHome() {
  // mainEl.innerHTML = "";
@@ -106,17 +106,14 @@ function renderHome() {
   option1.textContent = "Project";
   select.appendChild(option);
   select.appendChild(option1);
-  mainEl.appendChild(selectLabel);
-  mainEl.appendChild(select);
-
+ 
   // ---*** Title Input Box ***---
   let inputLabel = document.createElement("label");
   inputLabel.setAttribute("for", "title");
   inputLabel.textContent = "Title"
   let titleTextArea = document.createElement("input");
   titleTextArea.setAttribute("id", "title");
-  mainEl.appendChild(inputLabel);
-  mainEl.appendChild(titleTextArea);
+
 
   // ---*** Location Input Box ***---
   let inputLoc = document.createElement("label");
@@ -124,8 +121,7 @@ function renderHome() {
   inputLoc.textContent = "Location"
   let locTextArea = document.createElement("input");
   locTextArea.setAttribute("id", "loc");
-  mainEl.appendChild(inputLoc);
-  mainEl.appendChild(locTextArea);
+
 
   // ---*** Start Date ***---
   let sDateLabel = document.createElement("label");
@@ -139,8 +135,6 @@ function renderHome() {
     type: "datetime-local"
   }
   setMultipleAttrs(sDateInput,sDateAttrs);
-  mainEl.appendChild(sDateLabel);
-  mainEl.appendChild(sDateInput);
 
   // ---*** Ending Date ***---
   let eDateLabel = document.createElement("label");
@@ -154,18 +148,19 @@ function renderHome() {
     type: "datetime-local"
   }
   setMultipleAttrs(eDateInput,eDateAttrs);
-  mainEl.appendChild(eDateLabel);
-  mainEl.appendChild(eDateInput);
 
-}
+  let pasteBtn = document.createElement('button');
+  let pasteIcon = document.createElement('i');
+  pasteIcon.setAttribute("class", 'fa-regular fa-paste');
+  pasteBtn.appendChild(pasteIcon);
+  let pasteBtnAttrs = {
+    class: 'pasteBtn ',
+    type : 'button'
+  }
+  setMultipleAttrs(pasteBtn, pasteBtnAttrs);
+  }
 
 init();
-  function renderTitle(titleContent) {
-    let title = document.createElement("h2");
-    title.classList.add("q-title");
-    title.textContent = titleContent;
-    mainEl.appendChild(title);
-  }
 
 function setMultipleAttrs(elem, elemAttrs) {
   Object.keys(elemAttrs).forEach(attribute => {
