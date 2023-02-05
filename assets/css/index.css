@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+    background: #0a0a23;
+    height: 100vh;
+    color: #fff;
+    display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	font-family: monospace;
+	line-height: 1.5;
+}
+
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+p {
+    font-size: 125%;
+}
+
+/* HEADER */
+
+header {
+    background-color:#23230a;
+   }
+
+header ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 35px;
+    padding: 0 24px;
+}
+
+header li {
+    list-style-type: none;
+    color: white;
+    font-size: 125%;
+}
+
+header a:hover {
+    background-color: #0a0a23;
+    /*color: #23230a;*/
+}
+
+.navLink {
+    width: 50%;
+    display: flex;
+    align-content: flex-start;
+    justify-content: space-between;
+}
+
+.navLink a {
+    margin: 0 15px;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    padding: 24px;
+    margin: 0 auto;
+    max-width: 575px;
+}
+
+.card {
+    display: flex;
+    align-content: center;
+    position: relative;
+    max-width: 550px;
+    padding: 32px;
+    box-shadow: 3px 3px 10px #23170a;
+    border-radius: 8px;
+    background-color: #0a0a23;
+}
+
+
+.textBox,.pasteBtn,.search-wrapper {
+    position: relative;
+    padding: 10px;
+}
+.search-wrapper {
+    width: 500px;
+    margin: 50px auto auto;
+}
+.textBox {
+    max-width: 550px;
+    border: 1px solid #23170a;
+    outline: 0;
+    border-radius: 15px;
+}
+.textBox:focus {
+    box-shadow: 0 0 15px 5px #b0e0ee;
+    border: 2px solid #bebede;
+}
+.pasteBtn {
+    border:1px solid transparent;
+    background-color: transparent;
+    display: inline-block;
+    vertical-align: middle;
+    outline: 0;
+    cursor: pointer;
+}
+.pasteBtn:after {
+    content: url("../icons/paste-solid.svg");
+    display: block;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    /*background-color: #0a0a23;*/
+    z-index:1;
+    right: 35px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    padding: 2px;
+    border-radius: 5%;
+    border: transparent;
+    text-align: center;
+    color: white;
+    font-weight: normal;
+    font-size: 12px;
+    box-shadow: 0 0 2px #23230a;
+    cursor: pointer;
+}
+
+.pasteBtn:hover{
+    transform: rotate(360deg);
+}
+
+label{
+    font-size: 130%;
+    margin: 0 12px 0 0;
+}
+
+/*---*** Footer ***---*/
+
+footer{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 6px 12px;
+    background-color: #23230a;
+}
+footer img{
+    width: 32px;
+    transition: transform 0.5s;
+}
+
+footer img:hover {
+    transform: rotate(360deg);
+}
