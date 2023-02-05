@@ -74,13 +74,23 @@ main{
     max-width: 575px;
 }
 
+main button {
+    margin: 20px 2% 2%;
+    padding: 10px 20px;
+    font-family: monospace;
+    background-color: #23230a;
+    color: white;
+    border: none;
+    border-radius: 25px;
+}
+
 .card {
     display: flex;
     align-content: center;
     position: relative;
     max-width: 550px;
     padding: 32px;
-    box-shadow: 3px 3px 10px #23170a;
+    box-shadow: 3px 3px 20px #23170a;
     border-radius: 8px;
     background-color: #0a0a23;
 }
@@ -99,6 +109,7 @@ main{
     border: 1px solid #23170a;
     outline: 0;
     border-radius: 15px;
+    /*width: 21vh;*/
 }
 .textBox:focus {
     box-shadow: 0 0 15px 5px #b0e0ee;
@@ -118,7 +129,6 @@ main{
     width: 15px;
     height: 15px;
     position: absolute;
-    /*background-color: #0a0a23;*/
     z-index:1;
     right: 35px;
     top: 0;

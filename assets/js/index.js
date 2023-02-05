@@ -1,37 +1,24 @@
-//let icsFile;
+let icsFile;
 
-/*
 function createIcs(sTime, eTime, title, location, description) {
-  // Event details
-  let startTime = new Date(sTime);
-  let endTime = new Date(eTime);
+  
   // Convert the date-time to the proper format
-  let start = formatDate(startTime);
-  let end = formatDate(endTime);
+  let start = sDate;
+  let end = eDate;
 
   // Create the ICS file
   icsFile =
-    "BEGIN:VCALENDAR\n" +
-    "VERSION:2.0\n" +
-    "PRODID:-//ALX//TimeTable//English\n" +
-    "BEGIN:VEVENT\n" +
-    "DTSTART:" +
-    start +
-    "\n" +
-    "DTEND:" +
-    end +
-    "\n" +
-    "SUMMARY:" +
-    title +
-    "\n" +
-    "LOCATION:" +
-    location +
-    "\n" +
-    "DESCRIPTION:" +
-    description +
-    "\n" +
-    "END:VEVENT\n" +
-    "END:VCALENDAR";
+    `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//ALX//TimeTable//English
+BEGIN:VEVENT
+DTSTART:${start}
+DTEND:${end}
+SUMMARY:${title}
+LOCATION:${location}
+DESCRIPTION:${description}
+END:VEVENT
+END:VCALENDAR`;
 }
 function download(fileName) {
   let a = document.createElement("a");
@@ -49,16 +36,14 @@ function formatDate(date) {
   date.replace("-", "");
   return date;
 }
-*/
 
 // const input = document.querySelector("#sDate");
 // input.value = "2021-03-31";
 //
-// input.addEventListener("input", () => {
-//   console.log(input.value); // 2021-03-31
-// });
+
 
 let mainEl = document.querySelector("#main");
+let homeEl = document.getElementById('home');
 
   // ---*** Head Title ***---
   let head = document.createElement("h1");
@@ -158,11 +143,20 @@ setMultipleAttrs(locTextArea,locTextAreaAttrs);
   //---*** Next Button ***---
   let nextBtn = document.createElement('button');
   nextBtn.setAttribute('id', "nextBtn");
+  nextBtn.textContent = 'Next';
+
+  //---*** Done Button ***---
+  let doneBtn = document.createElement('button');
+  doneBtn.setAttribute('id', "doneBtn");
+  doneBtn.textContent = 'Done';
+
+
 
   //---*** Cards to Display ***---
-let card0 = createCard(titleLabel,titleTextArea);
-let card1 = createCard(locLabel,locTextArea,pasteBtn);
-let card2 = createCard(sDateLabel,sDateInput,eDateLabel,eDateInput);
+let card0 = createCard(selectLabel, select);
+let card1 = createCard(titleLabel,titleTextArea);
+let card2 = createCard(locLabel,locTextArea,pasteBtn,);
+let card3 = createCard(sDateLabel,sDateInput,eDateLabel,eDateInput);
 
 
 function setMultipleAttrs(elem, elemAttrs) {
@@ -182,19 +176,94 @@ function createCard(...elements){
 
 mainEl.appendChild(card1);
 //---*** Read text from clipboard ***---
-pasteBtn.addEventListener("click", async () => {
-  try {
-    const text = await navigator.clipboard.readText();
-    document.getElementById('loc').value += text;
-    console.log("Text pasted.");
-  } catch (error) {
-    console.log("Failed to read clipboard");
+pasteBtn.addEventListener("click",
+    async () => {
+      try {
+        const [text] = await Promise.all([navigator.clipboard.readText()]);
+        document.getElementById('loc').value += text;
+        console.log("Text pasted.");
+      } catch (error) {
+        console.log("Failed to read clipboard");
+        navigator.clipboard.readText().then((text) =>
+            document.getElementById('loc').value += text);
+        console.log("Text pasted.");
+      }
+    });
+
+function renderCards() {
+  mainEl.textContent = '';
+  mainEl.appendChild(card0);
+  mainEl.appendChild(nextBtn);
+  nextBtn.addEventListener('click', ()=>{
+    mainEl.textContent = '';
+    mainEl.appendChild(card1);
+    mainEl.appendChild(nextBtn);
+    nextBtn.addEventListener('click',
+        () => {
+          mainEl.textContent = '';
+          mainEl.appendChild(card2);
+          mainEl.appendChild(nextBtn);
+          nextBtn.addEventListener('click', () => {
+            mainEl.textContent = '';
+            mainEl.appendChild(card3);
+            mainEl.appendChild(doneBtn);
+          });
+        });
+  });
+  doneBtn.addEventListener("click", ()=> console.log('done'));
+}
+
+function renderHome() {
+  homeEl.addEventListener('click', renderHome);
+  let par = document.createElement('p');
+  par.textContent = 'Welcome to calendar ICS creator.' +
+      'This program was only specified to create ALX program.';
+  par.innerHTML += `You can edit it to suit you on <a href="https://github.com/oforigyimah/ics_creator" target="_blank"><em>GITHUB</em>.`;
+
+  let addBtn = document.createElement('button');
+  addBtn.setAttribute('id', 'addBtn');
+  addBtn.textContent = 'Add Event';
+  mainEl.textContent = '';
+  mainEl.appendChild(head);
+  mainEl.appendChild(par);
+  mainEl.appendChild(addBtn);
+  addBtn.addEventListener('click',renderCards);
+}
+  function init() {
+  renderHome()
   }
+
+  window.addEventListener('load', init);
+
+let sDate;
+let eDate = eDateInput.value;
+let title = titleTextArea.value;
+let loc = locTextArea.value;
+let description = select.value;
+ sDateInput.addEventListener("input", () => {
+   console.log(sDateInput.value);
+   sDate = sDateInput.value
+ });
+eDateInput.addEventListener("input", () => {
+  console.log(eDateInput.value);
+  eDate = eDateInput.value;
+});
+titleTextArea.addEventListener("input", () => {
+  console.log(titleTextArea.value);
+  title = titleTextArea.value;
+  });
+locTextArea.addEventListener("input", () => {
+  console.log(locTextArea.value);
+  loc = locTextArea.value;
+});
+select.addEventListener("input", () => {
+  console.log(select.value);
+  description = select.value;
 });
 
 
-
-
-
-
+doneBtn.addEventListener("click", ()=>{
+  createIcs(sDate,eDate,title,loc,description);
+  console.log(icsFile);
+})
 
