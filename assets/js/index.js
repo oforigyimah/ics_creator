@@ -154,6 +154,10 @@ setMultipleAttrs(locTextArea,locTextAreaAttrs);
   }
     setMultipleAttrs(pasteBtn, pasteBtnAttrs);
   mainEl.appendChild(pasteBtn);
+  
+  //---*** Next Button ***---
+  let nextBtn = document.createElement('button');
+  nextBtn.setAttribute('id', "nextBtn");
 
   //---*** Cards to Display ***---
 let card0 = createCard(titleLabel,titleTextArea);
@@ -177,7 +181,6 @@ function createCard(...elements){
 }
 
 mainEl.appendChild(card1);
-
 //---*** Read text from clipboard ***---
 pasteBtn.addEventListener("click", async () => {
   try {
@@ -188,6 +191,7 @@ pasteBtn.addEventListener("click", async () => {
     console.log("Failed to read clipboard");
   }
 });
+
 
 
 
